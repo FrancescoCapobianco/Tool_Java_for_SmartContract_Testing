@@ -3,7 +3,7 @@
 ![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=black)
 ![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=blue)
 ![Solidity](https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=blue)
-![JUnit5](https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=black)
+![JUnit5](https://img.shields.io/badge/JUnit6-25A162?style=for-the-badge&logo=junit6&logoColor=black)
 
 Un middleware Java progettato per automatizzare e semplificare il testing off-chain di Smart Contract Solidity, colmando il divario tra l'Ecosistema Web3 e gli ambienti di sviluppo Enterprise (JUnit).
 
