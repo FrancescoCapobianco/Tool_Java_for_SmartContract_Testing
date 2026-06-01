@@ -1,0 +1,6 @@
+org/framework/IdentityAuthenticator.class
+org/framework/TransactionHandler.class
+org/framework/ContractTester$ContractCall.class
+org/framework/ContractTester.class
+org/framework/CheckGasHandler.class
+org/framework/ExecutionHandler.class

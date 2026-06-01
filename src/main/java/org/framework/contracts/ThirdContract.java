@@ -1,0 +1,171 @@
+package org.framework.contracts;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.Callable;
+import javax.annotation.processing.Generated;
+import org.web3j.abi.TypeReference;
+import org.web3j.abi.datatypes.Function;
+import org.web3j.abi.datatypes.Type;
+import org.web3j.abi.datatypes.generated.StaticArray5;
+import org.web3j.abi.datatypes.generated.Uint256;
+import org.web3j.crypto.Credentials;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
+import org.web3j.protocol.core.RemoteFunctionCall;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
+import org.web3j.tx.Contract;
+import org.web3j.tx.TransactionManager;
+import org.web3j.tx.gas.ContractGasProvider;
+
+/**
+ * <p>Auto generated code.
+ * <p><strong>Do not modify!</strong>
+ * <p>Please use the <a href="https://docs.web3j.io/command_line.html">web3j command line tools</a>,
+ * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the 
+ * <a href="https://github.com/LFDT-web3j/web3j/tree/main/codegen">codegen module</a> to update.
+ *
+ * <p>Generated with web3j version 1.8.0.
+ */
+@SuppressWarnings("rawtypes")
+@Generated("org.web3j.codegen.SolidityFunctionWrapperGenerator")
+public class ThirdContract extends Contract {
+    public static final String BINARY = "60806040526040518060a00160405280600160ff168152602001600260ff168152602001600360ff168152602001600460ff168152602001600560ff168152505f906005604c929190605c565b503480156057575f5ffd5b5060b5565b8260058101928215608d579160200282015b82811115608c578251829060ff16905591602001919060010190606e565b5b50905060989190609c565b5090565b5b8082111560b1575f815f905550600101609d565b5090565b610612806100c25f395ff3fe608060405234801561000f575f5ffd5b506004361061004a575f3560e01c80631f601b961461004e5780634a4d6c671461007e5780634f960d861461009c578063d39fa233146100ba575b5f5ffd5b610068600480360381019061006391906103a8565b6100ea565b60405161007591906104a1565b60405180910390f35b6100866101f3565b60405161009391906104a1565b60405180910390f35b6100a461025c565b6040516100b191906104a1565b60405180910390f35b6100d460048036038101906100cf91906104e4565b610305565b6040516100e1919061051e565b60405180910390f35b6100f261031d565b5f8383905011610137576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161012e90610591565b60405180910390fd5b5f5f600580602002604051908101604052809291908260058015610170576020028201915b81548152602001906001019080831161015c575b5050505050905083835f81811061018a576101896105af565b5b90506020020135815f600581106101a4576101a36105af565b5b6020020181815250505f6005806020026040519081016040528092919082600580156101e5576020028201915b8154815260200190600101908083116101d1575b505050505091505092915050565b6101fb61031d565b5f5f90506063815f60058110610214576102136105af565b5b01819055505f600580602002604051908101604052809291908260058015610251576020028201915b81548152602001906001019080831161023d575b505050505091505090565b61026461031d565b5f5f60058060200260405190810160405280929190826005801561029d576020028201915b815481526020019060010190808311610289575b505050505090506063815f600581106102b9576102b86105af565b5b6020020181815250505f6005806020026040519081016040528092919082600580156102fa576020028201915b8154815260200190600101908083116102e6575b505050505091505090565b5f8160058110610313575f80fd5b015f915090505481565b6040518060a00160405280600590602082028036833780820191505090505090565b5f5ffd5b5f5ffd5b5f5ffd5b5f5ffd5b5f5ffd5b5f5f83601f84011261036857610367610347565b5b8235905067ffffffffffffffff8111156103855761038461034b565b5b6020830191508360208202830111156103a1576103a061034f565b5b9250929050565b5f5f602083850312156103be576103bd61033f565b5b5f83013567ffffffffffffffff8111156103db576103da610343565b5b6103e785828601610353565b92509250509250929050565b5f60059050919050565b5f81905092915050565b5f819050919050565b5f819050919050565b61042281610410565b82525050565b5f6104338383610419565b60208301905092915050565b5f602082019050919050565b610454816103f3565b61045e81846103fd565b925061046982610407565b805f5b838110156104995781516104808782610428565b965061048b8361043f565b92505060018101905061046c565b505050505050565b5f60a0820190506104b45f83018461044b565b92915050565b6104c381610410565b81146104cd575f5ffd5b50565b5f813590506104de816104ba565b92915050565b5f602082840312156104f9576104f861033f565b5b5f610506848285016104d0565b91505092915050565b61051881610410565b82525050565b5f6020820190506105315f83018461050f565b92915050565b5f82825260208201905092915050565b7f77726f6e67206e756d626572206f6620706172616d65746572730000000000005f82015250565b5f61057b601a83610537565b915061058682610547565b602082019050919050565b5f6020820190508181035f8301526105a88161056f565b9050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52603260045260245ffdfea2646970667358221220fa9e490a21f0053b6fcae38ec3bcdc6ae322debf02c0d0becb671a7dc738bd1964736f6c634300081e0033\n";
+
+    private static String librariesLinkedBinary;
+
+    public static final String FUNC_CALLDATAWORKING = "calldataWorking";
+
+    public static final String FUNC_MEMORYWORKING = "memoryWorking";
+
+    public static final String FUNC_NUMBERS = "numbers";
+
+    public static final String FUNC_STORAGEWORKING = "storageWorking";
+
+    @Deprecated
+    protected ThirdContract(String contractAddress, Web3j web3j, Credentials credentials,
+            BigInteger gasPrice, BigInteger gasLimit) {
+        super(BINARY, contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    protected ThirdContract(String contractAddress, Web3j web3j, Credentials credentials,
+            ContractGasProvider contractGasProvider) {
+        super(BINARY, contractAddress, web3j, credentials, contractGasProvider);
+    }
+
+    @Deprecated
+    protected ThirdContract(String contractAddress, Web3j web3j,
+            TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        super(BINARY, contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    protected ThirdContract(String contractAddress, Web3j web3j,
+            TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
+        super(BINARY, contractAddress, web3j, transactionManager, contractGasProvider);
+    }
+
+    public RemoteFunctionCall<List> calldataWorking(List<BigInteger> _input) {
+        final Function function = new Function(FUNC_CALLDATAWORKING, 
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
+                        org.web3j.abi.datatypes.generated.Uint256.class,
+                        org.web3j.abi.Utils.typeMap(_input, org.web3j.abi.datatypes.generated.Uint256.class))), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<StaticArray5<Uint256>>() {}));
+        return new RemoteFunctionCall<List>(function,
+                new Callable<List>() {
+                    @Override
+                    @SuppressWarnings("unchecked")
+                    public List call() throws Exception {
+                        List<Type> result = (List<Type>) executeCallSingleValueReturn(function, List.class);
+                        return convertToNative(result);
+                    }
+                });
+    }
+
+    public RemoteFunctionCall<List> memoryWorking() {
+        final Function function = new Function(FUNC_MEMORYWORKING, 
+                Arrays.<Type>asList(), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<StaticArray5<Uint256>>() {}));
+        return new RemoteFunctionCall<List>(function,
+                new Callable<List>() {
+                    @Override
+                    @SuppressWarnings("unchecked")
+                    public List call() throws Exception {
+                        List<Type> result = (List<Type>) executeCallSingleValueReturn(function, List.class);
+                        return convertToNative(result);
+                    }
+                });
+    }
+
+    public RemoteFunctionCall<BigInteger> numbers(BigInteger param0) {
+        final Function function = new Function(FUNC_NUMBERS, 
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)), 
+                Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
+        return executeRemoteCallSingleValueReturn(function, BigInteger.class);
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> storageWorking() {
+        final Function function = new Function(
+                FUNC_STORAGEWORKING, 
+                Arrays.<Type>asList(), 
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
+    }
+
+    @Deprecated
+    public static ThirdContract load(String contractAddress, Web3j web3j, Credentials credentials,
+            BigInteger gasPrice, BigInteger gasLimit) {
+        return new ThirdContract(contractAddress, web3j, credentials, gasPrice, gasLimit);
+    }
+
+    @Deprecated
+    public static ThirdContract load(String contractAddress, Web3j web3j,
+            TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return new ThirdContract(contractAddress, web3j, transactionManager, gasPrice, gasLimit);
+    }
+
+    public static ThirdContract load(String contractAddress, Web3j web3j, Credentials credentials,
+            ContractGasProvider contractGasProvider) {
+        return new ThirdContract(contractAddress, web3j, credentials, contractGasProvider);
+    }
+
+    public static ThirdContract load(String contractAddress, Web3j web3j,
+            TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
+        return new ThirdContract(contractAddress, web3j, transactionManager, contractGasProvider);
+    }
+
+    public static RemoteCall<ThirdContract> deploy(Web3j web3j, Credentials credentials,
+            ContractGasProvider contractGasProvider) {
+        return deployRemoteCall(ThirdContract.class, web3j, credentials, contractGasProvider, getDeploymentBinary(), "");
+    }
+
+    @Deprecated
+    public static RemoteCall<ThirdContract> deploy(Web3j web3j, Credentials credentials,
+            BigInteger gasPrice, BigInteger gasLimit) {
+        return deployRemoteCall(ThirdContract.class, web3j, credentials, gasPrice, gasLimit, getDeploymentBinary(), "");
+    }
+
+    public static RemoteCall<ThirdContract> deploy(Web3j web3j,
+            TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
+        return deployRemoteCall(ThirdContract.class, web3j, transactionManager, contractGasProvider, getDeploymentBinary(), "");
+    }
+
+    @Deprecated
+    public static RemoteCall<ThirdContract> deploy(Web3j web3j,
+            TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
+        return deployRemoteCall(ThirdContract.class, web3j, transactionManager, gasPrice, gasLimit, getDeploymentBinary(), "");
+    }
+
+    public static void linkLibraries(List<Contract.LinkReference> references) {
+        librariesLinkedBinary = linkBinaryWithReferences(BINARY, references);
+    }
+
+    private static String getDeploymentBinary() {
+        if (librariesLinkedBinary != null) {
+            return librariesLinkedBinary;
+        } else {
+            return BINARY;
+        }
+    }
+}
