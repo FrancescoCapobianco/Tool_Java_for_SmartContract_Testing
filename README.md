@@ -11,7 +11,7 @@ Un middleware Java progettato per automatizzare e semplificare il testing off-ch
 Attualmente, il testing degli Smart Contract avviene prevalentemente tramite framework JavaScript, il che rende complessa l'integrazione con i flussi di Continuous Integration e Continuous Deployment (CI/CD) nativi in Java.
 L'uso diretto di librerie di basso livello come Web3j in Java comporta accoppiamento forte, codice boilerplate e una gestione molto complessa delle eccezioni EVM (es. i fallimenti dei require).
 
-Questo framework risolve queste limitazioni offrendo un'interfaccia pulita per validare la business logic degli Smart Contract direttamente tramite JUnit, delegando al middleware la gestione infrastrutturale del client blockchain locale (es. Ganache).
+Questo tool mira a risolvere queste limitazioni offrendo un'interfaccia pulita per validare la business logic degli Smart Contract direttamente tramite JUnit, delegando al middleware la gestione infrastrutturale della blockchain locale (es. Ganache).
 
 ### Architettura e Design Pattern:
 Il middleware è costruito attorno a due Design Pattern fondamentali:
@@ -21,7 +21,7 @@ Il middleware è costruito attorno a due Design Pattern fondamentali:
 - Chain of Responsibility: L'elaborazione delle chiamate ai contratti è delegata a una catena di handler (Gestione del Gas, Esecuzione RPC, Validazione Eccezioni), permettendo di disaccoppiare la logica di invio da quella di controllo degli errori.
 
 ### Use Case:
-L'obiettivo è consentire allo sviluppatore di concentrarsi esclusivamente sulla logica del test. Ecco come appare un test di Access Control (RBAC) utilizzando il framework:
+L'obiettivo è consentire allo sviluppatore di concentrarsi esclusivamente sulla logica del test. Ecco come appare un test di Access Control (RBAC) utilizzando il tool:
 
 ```
 import org.junit.jupiter.api.Test;
