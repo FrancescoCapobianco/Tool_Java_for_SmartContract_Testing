@@ -9,7 +9,7 @@ import java.util.Map;
  * Permette di mappare i nomi logici alle chiavi private,
  * necessarie per firmare le transazioni.
 */
-public class IdentityAuthenticator {
+class IdentityAuthenticator {
 
     private final Map<String, Credentials> identityPool;
     private String currentIdentity;

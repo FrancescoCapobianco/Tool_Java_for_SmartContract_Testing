@@ -21,6 +21,7 @@ public class ContractTester {
     private final IdentityAuthenticator identityAuthenticator;
     private final StaticGasProvider gasProvider;
     private final TransactionHandler callsHandler;
+    private final CheckGasHandler gasHandler;
 
     private Object contractInstance;
     private String contractAddress;
@@ -49,7 +50,8 @@ public class ContractTester {
         );
     
         TransactionHandler executor = new ExecutionHandler();
-        this.callsHandler = new CheckGasHandler(executor, gasProvider);
+        this.gasHandler = new CheckGasHandler(executor, this.gasProvider);
+        this.callsHandler = this.gasHandler;
     }
 
     // ----identityAuthenticator:----
@@ -59,6 +61,9 @@ public class ContractTester {
 
     /** Carica l'identity e aggiorna lo Smart Contract con nuove credenziali */
     public void useIdentity(final String roleName) {
+        if (roleName.equals(this.identityAuthenticator.getCurrentIdentity())) 
+            return; 
+
         this.identityAuthenticator.setIdentity(roleName);
 
         // Rigenerazione contratto con nuove credenziali:
@@ -114,12 +119,12 @@ public class ContractTester {
     */
     @FunctionalInterface
     public interface ContractCall {
-        void execute() throws Exception;
+        Object execute() throws Exception;
     }
 
     /** Gestisce le require necessarie per testare la Business Logic.
-     * @param call                  :  condition del require
-     * @param expectedReason        : messaggio personalizzato di errore
+     * @param call                  :  funzione del contratto
+     * @param expectedReason        :  messaggio personalizzato di errore require
     */
     public void assertRequireFails(ContractCall call, String expectedReason) {
         try {
@@ -131,6 +136,19 @@ public class ContractTester {
 
     public void assertRequireFails(ContractCall call) {
         assertRequireFails(call, null);
+    }
+
+    /** Gestisce le asserzioni economiche, fondamentali per Gas Profiling.
+     * @param call                   : funzione del contratto
+     * @param maxGasLimit            : massimo gas limite concesso
+    */
+    public void assertGasConsumption(ContractCall call, BigInteger maxGasLimit) throws Exception {
+        this.gasHandler.setMaxGasAllowed(maxGasLimit);
+        try {
+            this.callsHandler.handleRequest(call, null);
+        } finally {
+            this.gasHandler.setMaxGasAllowed(null);
+        }
     }
 
 }

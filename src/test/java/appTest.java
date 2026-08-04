@@ -1,3 +1,5 @@
+// Test su: SecureVault, SimpleStorage (istanza ganache: JUnit-javaToBlockchain)
+
 import org.framework.ContractTester;
 import org.framework.contracts.SimpleStorage;
 import org.framework.contracts.SecureVault;
@@ -43,14 +45,13 @@ class appTest {
     @Order(1)
     void testAccessControl() {
         ctEnv.registerContract(SECURE_VAULT_ADDR, SecureVault::load);
-
         ctEnv.useIdentity("Unauthorized User");
+        
+        SecureVault vault = ctEnv.getContract();
 
         ctEnv.assertRequireFails(
-            () -> { 
-                SecureVault vault = ctEnv.getContract();
-                vault.unlockVault().send(); 
-            }, "Solo l'admin puo sbloccare"
+            () -> vault.unlockVault().send(),
+            "Solo l'admin puo sbloccare"
         );
 
     }
@@ -61,12 +62,11 @@ class appTest {
     void testInputValidation() {
 
         ctEnv.useIdentity("Unauthorized User");
+        SecureVault vault = ctEnv.getContract();
 
         ctEnv.assertRequireFails(
-            () -> {
-                SecureVault vault = ctEnv.getContract();
-                vault.deposit(BigInteger.ZERO).send();
-            }, "L'importo deve essere maggiore di zero"
+            () -> vault.deposit(BigInteger.ZERO).send(),
+            "L'importo deve essere maggiore di zero"
         );
 
     }
@@ -102,7 +102,8 @@ class appTest {
         SecureVault vault = ctEnv.getContract();
         
         ctEnv.assertRequireFails(
-            () -> {vault.withdraw(BigInteger.valueOf(200)).send();}, "Fondi insufficienti"
+            () -> vault.withdraw(BigInteger.valueOf(200)).send(),
+            "Fondi insufficienti"
         );
 
     }

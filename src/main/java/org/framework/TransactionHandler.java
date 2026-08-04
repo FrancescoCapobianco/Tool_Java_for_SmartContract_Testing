@@ -5,13 +5,13 @@ import org.framework.ContractTester.ContractCall;
 /**
  * Interface for Facade: CoR 
 */
-public interface TransactionHandler {
+interface TransactionHandler {
 
     /**
      * Elabora le richieste contrattuali all'interno della catena.
      * @param call              : Chiamata alla SmartContract da eseguire.
-     * @param expectedReason    : Motivo del revert atteso (null se test positivo).
+     * @param expectedReason    : Motivo del revert atteso (null se test positivo come valore atteso).
     */
-    void handleRequest(final ContractCall call, final String expectedReason) throws Exception;
+    Object handleRequest(final ContractCall call, final String expectedReason) throws Exception;
 
 }

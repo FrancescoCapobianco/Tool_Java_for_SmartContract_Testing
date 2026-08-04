@@ -6,14 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /** Esegue la transazione su EVM e converte i fallimenti in asserzioni JUnit */
-public class ExecutionHandler implements TransactionHandler {
+class ExecutionHandler implements TransactionHandler {
     
     @Override
-    public void handleRequest(final ContractCall call, final String expectedReason) throws Exception {
-        if (expectedReason != null)
+    public Object handleRequest(final ContractCall call, final String expectedReason) throws Exception {
+        if (expectedReason != null) {
             executeNegativeTest(call, expectedReason);
+            return null;
+        }
         else
-            call.execute();
+            return call.execute();  // TransactionReceipt
     }
 
     private void executeNegativeTest(final ContractCall call, final String expectedReason) {
@@ -23,7 +25,7 @@ public class ExecutionHandler implements TransactionHandler {
             fail("Test has failed: revert expected but the transaction has been successful.");
 
         } catch (Exception e) {
-            String errorMessage = e.getMessage() != null ? e.getMessage() : "";
+            String errorMessage = (e.getMessage() != null) ? e.getMessage() : "";
             
             boolean isRevert = errorMessage.contains("revert") || 
                                errorMessage.contains("status: 0x0") ||
@@ -60,7 +62,7 @@ public class ExecutionHandler implements TransactionHandler {
             String payload = hexData.substring(10);
             
             // L'ABI padding è a blocchi di 64 caratteri (32 byte).
-            // Blocco 1 [0-64]:     Offset dei dati (lo ignoro, di solito è 0x20)
+            // Blocco 1 [0-64]:     Offset dei dati (0x20)
             // Blocco 2 [64-128]:   Lunghezza della stringa
             String lengthHex = payload.substring(64, 128);
             int stringLength = Integer.parseInt(lengthHex, 16);
