@@ -1,0 +1,63 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "_currentInvestment",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"secondContract.sol": "SimplePonzi"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"secondContract.sol": {
+			"keccak256": "0x00c1a3e26426549f78955630e53afeb4dc29a7a1b38e39f54bef152b0c6beb4e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://44eadf581fa7f0566456f1f1bc56f04553d1178f88d6e83ee328fe4921d5e3e3",
+				"dweb:/ipfs/QmdpxLk7qq2wtGY7dJCAfSbL1x3NVbTqAqJSrJ1kKvZed5"
+			]
+		}
+	},
+	"version": 1
+}
