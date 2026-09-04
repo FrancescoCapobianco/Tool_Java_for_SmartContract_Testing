@@ -1,4 +1,4 @@
-# Java Middleware for Ethereum Smart Contract Testing
+# Tool Java for Ethereum Smart Contract Testing
 
 ![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=black)
 ![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=blue)
