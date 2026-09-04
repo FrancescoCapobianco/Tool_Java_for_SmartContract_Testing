@@ -23,7 +23,7 @@ public class appTestVS {
         tester.loadIdentity("Admin", "0xd498d5624f74de7fbf00af6a1a3513c1f13d64b773995757350398f85818a58e");
         tester.loadIdentity("Voter1", "0x377fa4b567418ec85aefafe7734c6795f495a7985c7a023fcf8dbcaf35d8ee6c");
         tester.loadIdentity("Voter2", "0x810d061b3b4b42619f28c389813e6dc425d0c4a93060ccbdb0ed73a54476d31b");
-        tester.loadIdentity("Voter3", "0x4a5679b764fcf5a5997d62ecb0cbac003c640dc43e6daa74a0b0cc331195ad22");
+        tester.loadIdentity("Voter3", "0x48d9ee8205e64f6a7faea30ce5a7a97130d4fe237d3923665058341fb754f0a4");
     }
 
     @Test

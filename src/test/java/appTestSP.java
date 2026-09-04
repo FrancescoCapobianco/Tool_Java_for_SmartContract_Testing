@@ -39,7 +39,7 @@ public class appTestSP {
         tester.registerContract(simplePonzi_ADDRESS, SimplePonzi::load);
         tester.useIdentity("FirstInvestor");
         SimplePonzi ponzi = tester.getContract();
-        ponzi.sendFunds(BigInteger.valueOf(11000)).send();
+        ponzi.sendFunds(BigInteger.valueOf(110000)).send();
 
         tester.useIdentity("SecondInvestor");
         SimplePonzi ponziNewInvestor = tester.getContract();

@@ -28,6 +28,13 @@ public class appTestGP {
     @Order(1)
     void testInvestmentGasEvent() throws Exception {
         tester.registerContract(gradualPonzi_ADDRESS, GradualPonzi::load);
+
+        // Sblocco per riparare lo stato
+        tester.useIdentity("Owner");
+        GradualPonzi pOwner = tester.getContract();
+        pOwner.unlock().send();
+
+
         tester.useIdentity("Investor");
         GradualPonzi ponzi = tester.getContract();
 

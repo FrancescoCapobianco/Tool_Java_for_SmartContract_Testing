@@ -31,7 +31,7 @@ class ExecutionHandler implements TransactionHandler {
                                errorMessage.contains("status: 0x0") ||
                                errorMessage.contains("exceeds block gas limit");
             
-            assertTrue(isRevert, "Captured Exception doesn't seem a revert. Message: " + errorMessage);
+            assertTrue(isRevert, "Captured Exception doesn't seem a revert.\nMessage: " + errorMessage + "\n");
 
             if (expectedReason != null && !expectedReason.isEmpty()) {
                 
@@ -39,10 +39,10 @@ class ExecutionHandler implements TransactionHandler {
                 
                 if (decodedReason != null) {
                     assertEquals(expectedReason, decodedReason, 
-                        "Revert reason not equal with decoded error from EVM.");
+                        "Revert reason not equal with decoded error from EVM.\n");
                 } else {
                     assertTrue(errorMessage.contains(expectedReason), 
-                        "Revert happened, but not for expected reason. Expected: '" + expectedReason + "', Found: " + errorMessage);
+                        "Revert happened, but not for expected reason.\nExpected: '" + expectedReason + "', Found: " + decodedReason + "\n");
                 }
             }
         }
@@ -53,7 +53,19 @@ class ExecutionHandler implements TransactionHandler {
         String errorSignature = "0x08c379a0";
         int index = errorMessage.indexOf(errorSignature);
         
-        if (index == -1) return null; // Nessun payload esadecimale trovato
+        // Estrazione JSON grezzo
+        if (index == -1) {
+            String reasonKey = "\"reason\":\"";
+            int reasonIndex = errorMessage.indexOf(reasonKey);
+            if (reasonIndex != -1) {
+                int start = reasonIndex + reasonKey.length();
+                int end = errorMessage.indexOf("\"", start);
+                if (end != -1) {
+                    return errorMessage.substring(start, end);
+                }
+            }
+            return null; // Nessun payload trovato
+        }
 
         try {
             
@@ -61,16 +73,16 @@ class ExecutionHandler implements TransactionHandler {
             
             String payload = hexData.substring(10);
             
-            // L'ABI padding è a blocchi di 64 caratteri (32 byte).
-            // Blocco 1 [0-64]:     Offset dei dati (0x20)
-            // Blocco 2 [64-128]:   Lunghezza della stringa
+            // L'ABI padding è a blocchi di 64 caratteri (32 byte):
+            // - Blocco 1 [0-64]:     Offset dei dati (0x20)
+            // - Blocco 2 [64-128]:   Lunghezza della stringa
+            // - Blocco 3 [128 - fine]: I caratteri effettivi della stringa
+            
             String lengthHex = payload.substring(64, 128);
             int stringLength = Integer.parseInt(lengthHex, 16);
-            
-            // Blocco 3 [128 - fine]: I caratteri effettivi della stringa
             String dataHex = payload.substring(128, 128 + (stringLength * 2));
             
-            // Converto da esadecimale ad ASCII
+            // Conversione da esadecimale ad ASCII
             StringBuilder reason = new StringBuilder();
             for (int i = 0; i < dataHex.length(); i += 2) {
                 String str = dataHex.substring(i, i + 2);

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
- * 'Interfaccia' per testing di Smart Contract.
+ * Interfaccia per testing di Smart Contract.
  * Centralizza la connessione alla blockchain, gestione gas e gestione identità. 
 */
 public class ContractTester {
@@ -113,9 +113,7 @@ public class ContractTester {
     }
 
     /**
-     * Interfaccia funzionale per testing su CoR.
-     * Dato che Web3j lancia sempre "Exception", la gestiamo per non 
-     * sporcare il codice del test.
+     * Interfaccia funzionale per gestire le chiamate degli Smart Contract.
     */
     @FunctionalInterface
     public interface ContractCall {
